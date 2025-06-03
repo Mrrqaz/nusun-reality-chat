@@ -1,6 +1,6 @@
-# NUSUN REALITY Chat Interface
+# Pixelnest Chat Interface
 
-A simple and elegant chat interface for NUSUN REALITY, designed to be embedded in websites with a clean, modern look.
+A simple and elegant chat interface, designed to be embedded in websites with a clean, modern look.
 
 ## Features
 
