@@ -3,34 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with AMZ Masterclass</title>
+    <title>Chat with Us</title>
     <style>
-        /* Basic body styling */
-        body {
-            font-family: sans-serif;
-            background-color: #f4f4f4;
+        /* Basic reset and full height setup */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevents scrollbars on the main page */
+            background-color: #e9e9e9; /* Slightly adjusted background for better shadow contrast */
+        }
+
+        /* Container for the iframe, with increased padding */
+        .chatbot-container {
+            width: 100%;
+            height: 100%;
+            padding: 30px; /* Increased padding */
+            box-sizing: border-box; /* Ensures padding is included within the 100% width/height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style the iframe to take up the full space within the padded container
+           and add 3D effects */
+        .chatbot-iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Removes the default iframe border */
+            display: block;
+            border-radius: 10px; /* Rounded corners for a softer, more modern look */
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.1),    /* Nearer, sharper shadow */
+                0 10px 25px rgba(0, 0, 0, 0.15); /* Further, more diffuse shadow for depth */
         }
     </style>
 </head>
 <body>
 
-    <div id="cd-widget"></div>
-
-    <script>
-      (function() {
-          if (window.chatWidgetScriptLoaded) return;
-          window.ChatWidgetConfig = {
-            projectId: "683b4df2f1adba29fb305285",  
-          };
-    
-          var chatWidgetScript = document.createElement("script");
-          chatWidgetScript.type = 'text/javascript';
-          chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
-          document.body.appendChild(chatWidgetScript);
-    
-          window.chatWidgetScriptLoaded = true;
-      })();
-    </script>
+    <div class="chatbot-container">
+        <iframe
+            class="chatbot-iframe"
+            src="https://chat-dash.com/iframe/683b4df2f1adba29fb305285"
+            allow="microphone"
+            title="Chatbot"
+        >
+            <p>Your browser does not support iframes. Please <a href="https://chat-dash.com/iframe/683b4df2f1adba29fb305285">click here to chat with us</a>.</p>
+        </iframe>
+    </div>
 
 </body>
 </html>
