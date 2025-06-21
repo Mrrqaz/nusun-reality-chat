@@ -1,63 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with PIXELNEST</title>
-    <style>
-        /* Basic reset and full height setup */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Prevents scrollbars on the main page */
-            background-color: #e9e9e9; /* Slightly adjusted background for better shadow contrast */
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Chat with PIXELNEST</title>
+   <style>
+       /* Basic reset and full height setup */
+       html, body {
+           margin: 0;
+           padding: 0;
+           height: 100%;
+           overflow: hidden;
+           background-color: #e9e9e9;
+       }
 
-        /* Container for the iframe, with increased padding */
-        .chatbot-container {
-            width: 100%;
-            height: 100%;
-            padding: 30px; /* Increased padding (20px * 1.5) */
-            box-sizing: border-box; /* Ensures padding is included within the 100% width/height */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+       /* Container for the iframe */
+       .chatbot-container {
+           width: 100%;
+           height: 100%;
+           padding: 30px;
+           box-sizing: border-box;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
 
-        /* Style the iframe to take up the full space within the padded container
-           and add 3D effects */
-        .chatbot-iframe {
-            width: 100%;
-            height: 100%;
-            border: none; /* Removes the default iframe border */
-            display: block;
-            border-radius: 10px; /* Rounded corners for a softer, more modern look */
-            box-shadow:
-                0 4px 8px rgba(0, 0, 0, 0.1),   /* Nearer, sharper shadow */
-                0 10px 25px rgba(0, 0, 0, 0.15); /* Further, more diffuse shadow for depth */
-            /* You can experiment with different box-shadow values:
-               A simpler but effective one:
-               box-shadow: 0 12px 28px rgba(0,0,0,0.20), 0 8px 10px rgba(0,0,0,0.18);
-               Or a more subtle one:
-               box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            */
-        }
-    </style>
+       /* Style the iframe (Desktop View) */
+       .chatbot-iframe {
+           width: 100%;
+           height: 100%;
+           border: none;
+           display: block;
+           border-radius: 10px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 10px 25px rgba(0, 0, 0, 0.15);
+           transition: all 0.2s ease-in-out;
+       }
+
+       /* Mobile optimization - improved approach */
+       @media (max-width: 768px) {
+           html, body {
+               background-color: #fff;
+               -webkit-text-size-adjust: 100%;
+               -ms-text-size-adjust: 100%;
+           }
+
+           .chatbot-container {
+               padding: 0;
+               margin: 0;
+           }
+
+           .chatbot-iframe {
+               border-radius: 0;
+               box-shadow: none;
+               width: 100vw;
+               height: 100vh;
+               min-width: 100vw;
+               min-height: 100vh;
+               transform: none;
+               position: absolute;
+               top: 0;
+               left: 0;
+               -webkit-overflow-scrolling: touch;
+           }
+       }
+
+       /* Extra small mobile devices */
+       @media (max-width: 480px) {
+           .chatbot-iframe {
+               width: 100vw;
+               height: 100vh;
+           }
+       }
+
+       /* Handle landscape orientation on mobile */
+       @media (max-width: 768px) and (orientation: landscape) {
+           .chatbot-iframe {
+               width: 100vw;
+               height: 100vh;
+           }
+       }
+   </style>
 </head>
 <body>
 
-    <div class="chatbot-container">
-        <iframe
-            class="chatbot-iframe"
-            src="https://dashboard.pixelnest.ai/iframe/683fecaf08019b8e73011879"
-            allow="microphone"
-            title="PIXELNEST Chatbot"
-        >
-            <!-- Fallback content for browsers that do not support iframes -->
-            <p>Your browser does not support iframes. Please <a href="https://dashboard.pixelnest.ai/iframe/683fecaf08019b8e73011879">click here to chat with us</a>.</p>
-        </iframe>
-    </div>
+<div class="chatbot-container">
+   <iframe
+       class="chatbot-iframe"
+       src="https://dashboard.pixelnest.ai/iframe/683fecaf08019b8e73011879"
+       allow="microphone"
+       title="PIXELNEST Chatbot"
+       loading="lazy"
+   >
+       <p>Your browser does not support iframes. Please <a href="https://dashboard.pixelnest.ai/iframe/683fecaf08019b8e73011879">click here to chat with us</a>.</p>
+   </iframe>
+</div>
 
 </body>
 </html>
