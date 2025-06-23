@@ -36,12 +36,10 @@
            transition: all 0.2s ease-in-out;
        }
 
-       /* Mobile optimization - improved approach */
+       /* --- MOBILE OPTIMIZATION (THE FIX IS HERE) --- */
        @media (max-width: 768px) {
            html, body {
-               background-color: #fff;
-               -webkit-text-size-adjust: 100%;
-               -ms-text-size-adjust: 100%;
+               background-color: #fff; /* Chat usually has a white background */
            }
 
            .chatbot-container {
@@ -50,33 +48,20 @@
            }
 
            .chatbot-iframe {
+               width: 100vw;
+               /* 
+                *  THE FIX: Use dvh (Dynamic Viewport Height).
+                *  It resizes to the visible area, accounting for browser UI.
+                *  -webkit-fill-available is a fallback for older browsers.
+               */
+               height: 100dvh; 
+               height: -webkit-fill-available;
+
                border-radius: 0;
                box-shadow: none;
-               width: 100vw;
-               height: 100vh;
-               min-width: 100vw;
-               min-height: 100vh;
-               transform: none;
                position: absolute;
                top: 0;
                left: 0;
-               -webkit-overflow-scrolling: touch;
-           }
-       }
-
-       /* Extra small mobile devices */
-       @media (max-width: 480px) {
-           .chatbot-iframe {
-               width: 100vw;
-               height: 100vh;
-           }
-       }
-
-       /* Handle landscape orientation on mobile */
-       @media (max-width: 768px) and (orientation: landscape) {
-           .chatbot-iframe {
-               width: 100vw;
-               height: 100vh;
            }
        }
    </style>
